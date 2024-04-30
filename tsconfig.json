@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "target": "ES2018",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+      "lib": ["ES2018", "ESNext.AsyncIterable"],
+      "module": "commonjs",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "outDir": "./dist",      
+    }
+}
+  
