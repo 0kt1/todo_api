@@ -16,6 +16,7 @@ export const resolvers = {
       await entityManager.save(task);
       return task;
     },
+
     toggleTodoStatus: async (_, { id }) => {
       const entityManager = getManager();
       // const task = await entityManager.findOneOrFail(TodoItem, id);
@@ -27,5 +28,37 @@ export const resolvers = {
       await entityManager.save(task);
       return task;
     },
+
+    deleteTask: async (_, { id }) => {
+      const entityManager = getManager();
+      const task = await entityManager.findOneOrFail(TodoItem,{ where: { id } });
+
+      if (!task) {
+        throw new Error(`Task with ID ${id} not found`);
+      }
+
+      const affected = await entityManager.remove(task);
+
+      return task;
+      // await entityManager.remove(task);
+      // // return task;
+    },
+
+    editTask: async (_, { id, title }) => {
+      const entityManager = getManager();
+      const task = await entityManager.findOneOrFail(TodoItem,{ where: { id } });
+
+      if (!task) {
+        throw new Error(`Task with ID ${id} not found`);
+      }
+
+      task.title = title;
+      await entityManager.save(task);
+      return task;
+    },
+
   },
+
+  
+
 };

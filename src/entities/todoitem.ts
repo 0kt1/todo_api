@@ -8,13 +8,13 @@ import {
 
 
 @Entity('TodoItem')
-export class TodoItem {
+export class TodoItem extends BaseEntity{
   @PrimaryGeneratedColumn('uuid')
   id: number;
 
-  
-  @Column()
-  title: string;
+  @Field({nullable: true})
+  @Column({nullable: true})
+  title!: string;
 
   @Column({ default: false })
   completed: boolean;

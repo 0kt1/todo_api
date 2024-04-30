@@ -15,6 +15,16 @@ const typeDefs = gql`
     addTodo(title: String!): TodoItem!
     toggleTodoStatus(id: ID!): TodoItem!
   }
+
+  type Mutation {
+    deleteTask(id: ID!): TodoItem!
+  }
+
+  type Mutation {
+    editTask(id: ID!, title: String!): TodoItem!
+    toggleTaskCompletion(id: ID!): TodoItem!
+  }
+
 `;
 
 export default typeDefs;
